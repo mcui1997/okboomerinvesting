@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>OK BOOMER! Weekly RSI Dashboard</title>
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon" />
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS Files -->
+    <link
+      href="assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+    <link href="assets/css/main.css" rel="stylesheet" />
+    <link href="assets/css/dashboard.css" rel="stylesheet" />
+  </head>
+
+  <body class="dashboard-page">
+    <header id="header" class="header d-flex align-items-center sticky-top">
+      <div
+        class="container-fluid container-xl position-relative d-flex align-items-center"
+      >
+        <a href="index.html" class="logo d-flex align-items-center me-auto">
+          <h1 class="sitename">Ok Boomer Investing LLC</h1>
+        </a>
+
+        <nav id="navmenu" class="navmenu">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#solution">System</a></li>
+            <li><a href="dashboard.html" class="active">Dashboard</a></li>
+          </ul>
+          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </nav>
+
+        <a class="btn-getstarted" href="https://msway.gumroad.com/l/okboomerinvesting" target="_blank">Get the Book</a>
+      </div>
+    </header>
+
+    <main class="main">
+      <!-- Dashboard Header Section -->
+      <section class="dashboard-hero section">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 text-center" style="color: white !important;">
+              <h1 style="color: white !important;">Weekly RSI Dashboard</h1>
+              <p class="subtitle" style="color: white !important;">
+                Real-time valuations and allocation recommendations for your portfolio
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tabs Section -->
+      <section class="dashboard-tabs section">
+        <div class="container">
+          <div class="tabs">
+            <button
+              class="tab-button active"
+              onclick="openTab(event, 'employer-retirement')"
+            >
+              Employer Retirement
+            </button>
+            <button class="tab-button" onclick="openTab(event, 'iras')">
+              IRAs
+            </button>
+            <button class="tab-button" onclick="openTab(event, 'taxable')">
+              Taxable Accounts
+            </button>
+          </div>
+
+          <!-- EMPLOYER RETIREMENT TAB -->
+          <div id="employer-retirement" class="tab-content active">
+            <div class="tab-instructions">
+              <h3>Employer Retirement Accounts (401k, HSA, 403b)</h3>
+              <p>
+                <strong>What you need to find in YOUR plan:</strong>
+              </p>
+              <ul>
+                <li>
+                  <strong>S&P 500 or Total Stock Market Fund</strong> - Look for
+                  fund names like "S&P 500 Index", "500 Index Fund", "Vanguard 500"
+                </li>
+                <li>
+                  <strong>International Fund</strong> - Look for "International
+                  Equity", "EAFE Index", "Developed Markets"
+                </li>
+                <li>
+                  <strong>Small Cap Fund</strong> - Look for "Small Cap Index",
+                  "Small/Mid Cap Index", "Extended Market"
+                </li>
+                <li>
+                  <strong>Money Market or Stable Value Fund</strong> - Look for
+                  "Money Market", "Stable Value", "Cash Equivalent"
+                </li>
+              </ul>
+              <p>
+                <strong>How to use these charts:</strong> The tickers shown below
+                (SPY, VXUS, VB) are REFERENCE charts. Check their RSI readings, then
+                apply those same valuation zones to the similar funds in YOUR
+                employer plan.
+              </p>
+            </div>
+
+            <!-- Allocation Calculator -->
+            <div class="allocation-calculator">
+              <h4>Portfolio Calculator</h4>
+              <p style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 15px">
+                Enter your target allocation and the RSI for each asset.
+              </p>
+
+              <div class="calculator-grid">
+                <!-- LEFT COLUMN: Target Allocations -->
+                <div class="targets-column">
+                  <h5>Target Allocation (%)</h5>
+                  <div class="input-group">
+                    <label for="spy-target">S&P 500 Fund:</label>
+                    <input
+                      type="number"
+                      id="spy-target"
+                      value="70"
+                      min="0"
+                      max="100"
+                    />
+                    <span>%</span>
+                  </div>
+                  <div class="input-group">
+                    <label for="vxus-target">International Fund:</label>
+                    <input
+                      type="number"
+                      id="vxus-target"
+                      value="20"
+                      min="0"
+                      max="100"
+                    />
+                    <span>%</span>
+                  </div>
+                  <div class="input-group">
+                    <label for="vb-target">Small Cap Fund:</label>
+                    <input
+                      type="number"
+                      id="vb-target"
+                      value="10"
+                      min="0"
+                      max="100"
+                    />
+                    <span>%</span>
+                  </div>
+                  <div style="margin-top: 20px">
+                    <span id="total-allocation" style="font-weight: 600"
+                      >Total: 100%</span
+                    >
+                    <span
+                      id="allocation-error"
+                      style="color: #ef4444; margin-left: 10px; display: none"
+                      >Must equal 100%</span
+                    >
+                  </div>
+                </div>
+
+                <!-- RIGHT COLUMN: Current RSI -->
+                <div class="rsi-column">
+                  <h5>Current RSI Values</h5>
+                  <div class="rsi-input-group">
+                    <label for="spy-rsi">SPY:</label>
+                    <input
+                      type="number"
+                      id="spy-rsi"
+                      placeholder="0-100"
+                      min="0"
+                      max="100"
+                    />
+                  </div>
+                  <div class="rsi-input-group">
+                    <label for="vxus-rsi">VXUS:</label>
+                    <input
+                      type="number"
+                      id="vxus-rsi"
+                      placeholder="0-100"
+                      min="0"
+                      max="100"
+                    />
+                  </div>
+                  <div class="rsi-input-group">
+                    <label for="vb-rsi">VB:</label>
+                    <input
+                      type="number"
+                      id="vb-rsi"
+                      placeholder="0-100"
+                      min="0"
+                      max="100"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <button
+                class="calculate-btn"
+                onclick="calculateEmployerAllocations()"
+              >
+                Calculate Recommendations
+              </button>
+
+              <div id="employer-results" class="results-table"></div>
+            </div>
+
+            <div class="chart-grid">
+              <!-- SPY Chart -->
+              <div class="chart-box">
+                <h3>SPY - S&P 500 ETF (Reference)</h3>
+                <div class="tradingview-widget-container">
+                  <div class="tradingview-widget-container__widget"></div>
+                  <script
+                    type="text/javascript"
+                    src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js"
+                    async
+                  >
+                    {
+                        "autosize": false,
+                        "height": 700,
+                        "width": "100%",
+                        "hide_volume": true,
+                        "symbol": "AMEX:SPY",
+                        "interval": "W",
+                        "timezone": "Etc/UTC",
+                        "theme": "dark",
+                        "style": "1",
+                        "locale": "en",
+                        "enable_publishing": false,
+                        "hide_top_toolbar": false,
+                        "hide_legend": false,
+                        "save_image": false,
+                        "backgroundColor": "rgba(19, 23, 34, 1)",
+                        "studies": [
+                            {
+                                "id": "RSI@tv-basicstudies",
+                                "inputs": {
+                                    "length": 14
+                                }
+                            }
+                        ],
+                        "support_host": "https://www.tradingview.com"
+                    }
+                  </script>
+                </div>
+              </div>
+
+              <!-- VXUS Chart -->
+              <div class="chart-box">
+                <h3>VXUS - Total International Stock (Reference)</h3>
+                <div class="tradingview-widget-container">
+                  <div class="tradingview-widget-container__widget"></div>
+                  <script
+                    type="text/javascript"
+                    src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js"
+                    async
+                  >
+                    {
+                        "autosize": false,
+                        "height": 700,
+                        "width": "100%",
+                        "symbol": "NASDAQ:VXUS",
+                        "interval": "W",
+                        "timezone": "Etc/UTC",
+                        "theme": "dark",
+                        "hide_volume": true,
+                        "style": "1",
+                        "locale": "en",
+                        "enable_publishing": false,
+                        "hide_top_toolbar": false,
+                        "hide_legend": false,
+                        "save_image": false,
+                        "backgroundColor": "rgba(19, 23, 34, 1)",
+                        "studies": [
+                            {
+                                "id": "RSI@tv-basicstudies",
+                                "inputs": {
+                                    "length": 14
+                                }
+                            }
+                        ],
+                        "support_host": "https://www.tradingview.com"
+                    }
+                  </script>
+                </div>
+              </div>
+
+              <!-- VB Chart -->
+              <div class="chart-box">
+                <h3>VB - Small Cap Index (Reference)</h3>
+                <div class="tradingview-widget-container">
+                  <div class="tradingview-widget-container__widget"></div>
+                  <script
+                    type="text/javascript"
+                    src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js"
+                    async
+                  >
+                    {
+                        "autosize": false,
+                        "height": 700,
+                        "width": "100%",
+                        "symbol": "AMEX:VB",
+                        "interval": "W",
+                        "timezone": "Etc/UTC",
+                        "theme": "dark",
+                        "hide_volume": true,
+                        "style": "1",
+                        "locale": "en",
+                        "enable_publishing": false,
+                        "hide_top_toolbar": false,
+                        "hide_legend": false,
+                        "save_image": false,
+                        "backgroundColor": "rgba(19, 23, 34, 1)",
+                        "studies": [
+                            {
+                                "id": "RSI@tv-basicstudies",
+                                "inputs": {
+                                    "length": 14
+                                }
+                            }
+                        ],
+                        "support_host": "https://www.tradingview.com"
+                    }
+                  </script>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- IRAs TAB -->
+          <div id="iras" class="tab-content">
+            <div class="tab-instructions">
+              <h3>IRA Accounts (Roth & Traditional)</h3>
+              <p>
+                These are the exact tickers you can buy in your IRA. Use the RSI
+                readings to adjust your allocation across VTI (stocks), GLD (gold),
+                and IBIT (bitcoin).
+              </p>
+            </div>
+
+            <!-- Allocation Calculator -->
+            <div class="allocation-calculator">
+              <h4>Portfolio Calculator</h4>
+              <p style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 15px">
+                Enter your target allocation and the RSI for each asset.
+              </p>
+
+              <div class="calculator-grid">
+                <!-- LEFT COLUMN: Target Allocations -->
+                <div class="targets-column">
+                  <h5>Target Allocation (%)</h5>
+                  <div class="input-group">
+                    <label for="vti-target">VTI (Stocks):</label>
+                    <input
+                      type="number"
+                      id="vti-target"
+                      value="60"
+                      min="0"
+                      max="100"
+                    />
+                    <span>%</span>
+                  </div>
+                  <div class="input-group">
+                    <label for="gld-target">GLD (Gold):</label>
+                    <input
+                      type="number"
+                      id="gld-target"
+                      value="30"
+                      min="0"
+                      max="100"
+                    />
+                    <span>%</span>
+                  </div>
+                  <div class="input-group">
+                    <label for="ibit-target">IBIT (Bitcoin):</label>
+                    <input
+                      type="number"
+                      id="ibit-target"
+                      value="10"
+                      min="0"
+                      max="100"
+                    />
+                    <span>%</span>
+                  </div>
+                  <div style="margin-top: 20px">
+                    <span id="ira-total-allocation" style="font-weight: 600"
+                      >Total: 100%</span
+                    >
+                    <span
+                      id="ira-allocation-error"
+                      style="color: #ef4444; margin-left: 10px; display: none"
+                      >Must equal 100%</span
+                    >
+                  </div>
+                </div>
+
+                <!-- RIGHT COLUMN: Current RSI -->
+                <div class="rsi-column">
+                  <h5>Current RSI Values</h5>
+                  <div class="rsi-input-group">
+                    <label for="vti-rsi">VTI:</label>
+                    <input
+                      type="number"
+                      id="vti-rsi"
+                      placeholder="0-100"
+                      min="0"
+                      max="100"
+                    />
+                  </div>
+                  <div class="rsi-input-group">
+                    <label for="gld-rsi">GLD:</label>
+                    <input
+                      type="number"
+                      id="gld-rsi"
+                      placeholder="0-100"
+                      min="0"
+                      max="100"
+                    />
+                  </div>
+                  <div class="rsi-input-group">
+                    <label for="ibit-rsi">IBIT:</label>
+                    <input
+                      type="number"
+                      id="ibit-rsi"
+                      placeholder="0-100"
+                      min="0"
+                      max="100"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <button class="calculate-btn" onclick="calculateIRAAllocations()">
+                Calculate Recommendations
+              </button>
+
+              <div id="ira-results" class="results-table"></div>
+            </div>
+
+            <div class="chart-grid">
+              <!-- VTI Chart -->
+              <div class="chart-box">
+                <h3>VTI - Total Stock Market ETF</h3>
+                <div class="tradingview-widget-container">
+                  <div class="tradingview-widget-container__widget"></div>
+                  <script
+                    type="text/javascript"
+                    src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js"
+                    async
+                  >
+                    {
+                        "autosize": false,
+                        "height": 700,
+                        "width": "100%",
+                        "symbol": "AMEX:VTI",
+                        "interval": "W",
+                        "hide_volume": true,
+                        "timezone": "Etc/UTC",
+                        "theme": "dark",
+                        "style": "1",
+                        "locale": "en",
+                        "enable_publishing": false,
+                        "hide_top_toolbar": false,
+                        "hide_legend": false,
+                        "save_image": false,
+                        "backgroundColor": "rgba(19, 23, 34, 1)",
+                        "studies": [
+                            {
+                                "id": "RSI@tv-basicstudies",
+                                "inputs": {
+                                    "length": 14
+                                }
+                            }
+                        ],
+                        "support_host": "https://www.tradingview.com"
+                    }
+                  </script>
+                </div>
+              </div>
+
+              <!-- GLD Chart -->
+              <div class="chart-box">
+                <h3>GLD - Gold ETF</h3>
+                <div class="tradingview-widget-container">
+                  <div class="tradingview-widget-container__widget"></div>
+                  <script
+                    type="text/javascript"
+                    src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js"
+                    async
+                  >
+                    {
+                        "autosize": false,
+                        "height": 700,
+                        "width": "100%",
+                        "symbol": "AMEX:GLD",
+                        "interval": "W",
+                        "timezone": "Etc/UTC",
+                        "theme": "dark",
+                        "hide_volume": true,
+                        "style": "1",
+                        "locale": "en",
+                        "enable_publishing": false,
+                        "hide_top_toolbar": false,
+                        "hide_legend": false,
+                        "save_image": false,
+                        "backgroundColor": "rgba(19, 23, 34, 1)",
+                        "studies": [
+                            {
+                                "id": "RSI@tv-basicstudies",
+                                "inputs": {
+                                    "length": 14
+                                }
+                            }
+                        ],
+                        "support_host": "https://www.tradingview.com"
+                    }
+                  </script>
+                </div>
+              </div>
+
+              <!-- IBIT Chart -->
+              <div class="chart-box">
+                <h3>IBIT - iShares Bitcoin ETF</h3>
+                <div class="tradingview-widget-container">
+                  <div class="tradingview-widget-container__widget"></div>
+                  <script
+                    type="text/javascript"
+                    src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js"
+                    async
+                  >
+                    {
+                        "autosize": false,
+                        "height": 700,
+                        "width": "100%",
+                        "symbol": "NASDAQ:IBIT",
+                        "interval": "W",
+                        "hide_volume": true,
+                        "timezone": "Etc/UTC",
+                        "theme": "dark",
+                        "style": "1",
+                        "locale": "en",
+                        "enable_publishing": false,
+                        "hide_top_toolbar": false,
+                        "hide_legend": false,
+                        "save_image": false,
+                        "backgroundColor": "rgba(19, 23, 34, 1)",
+                        "studies": [
+                            {
+                                "id": "RSI@tv-basicstudies",
+                                "inputs": {
+                                    "length": 14
+                                }
+                            }
+                        ],
+                        "support_host": "https://www.tradingview.com"
+                    }
+                  </script>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAXABLE ACCOUNTS TAB -->
+          <div id="taxable" class="tab-content">
+            <div class="tab-instructions">
+              <h3>Taxable Accounts</h3>
+              <p>
+                For long-term wealth building outside retirement. Recommended
+                allocation: 50% Gold, 50% Bitcoin (aggressive) or add stocks for
+                conservative approach.
+              </p>
+              <p>
+                Remember: Rebalancing in taxable accounts triggers capital gains
+                taxes. Use strategic DCA (adjust contributions) rather than frequent
+                rebalancing.
+              </p>
+            </div>
+
+            <!-- Allocation Calculator -->
+            <div class="allocation-calculator">
+              <h4>Portfolio Calculator</h4>
+              <p style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 15px">
+                Enter your target allocation and the RSI for each asset.
+              </p>
+
+              <div class="calculator-grid">
+                <!-- LEFT COLUMN: Target Allocations -->
+                <div class="targets-column">
+                  <h5>Target Allocation (%)</h5>
+                  <div class="input-group">
+                    <label for="taxable-gld-target">GLD (Gold):</label>
+                    <input
+                      type="number"
+                      id="taxable-gld-target"
+                      value="50"
+                      min="0"
+                      max="100"
+                    />
+                    <span>%</span>
+                  </div>
+                  <div class="input-group">
+                    <label for="taxable-ibit-target">BTC (Bitcoin):</label>
+                    <input
+                      type="number"
+                      id="taxable-ibit-target"
+                      value="50"
+                      min="0"
+                      max="100"
+                    />
+                    <span>%</span>
+                  </div>
+                  <div style="margin-top: 20px">
+                    <span id="taxable-total-allocation" style="font-weight: 600"
+                      >Total: 100%</span
+                    >
+                    <span
+                      id="taxable-allocation-error"
+                      style="color: #ef4444; margin-left: 10px; display: none"
+                      >Must equal 100%</span
+                    >
+                  </div>
+                </div>
+
+                <!-- RIGHT COLUMN: Current RSI -->
+                <div class="rsi-column">
+                  <h5>Current RSI Values</h5>
+                  <div class="rsi-input-group">
+                    <label for="taxable-gld-rsi">GLD:</label>
+                    <input
+                      type="number"
+                      id="taxable-gld-rsi"
+                      placeholder="0-100"
+                      min="0"
+                      max="100"
+                    />
+                  </div>
+                  <div class="rsi-input-group">
+                    <label for="taxable-ibit-rsi">BTC:</label>
+                    <input
+                      type="number"
+                      id="taxable-ibit-rsi"
+                      placeholder="0-100"
+                      min="0"
+                      max="100"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <button class="calculate-btn" onclick="calculateTaxableAllocations()">
+                Calculate Recommendations
+              </button>
+
+              <div id="taxable-results" class="results-table"></div>
+            </div>
+
+            <div class="chart-grid">
+              <!-- GLD Chart -->
+              <div class="chart-box">
+                <h3>GLD - Gold ETF</h3>
+                <div class="tradingview-widget-container">
+                  <div class="tradingview-widget-container__widget"></div>
+                  <script
+                    type="text/javascript"
+                    src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js"
+                    async
+                  >
+                    {
+                        "autosize": false,
+                        "height": 700,
+                        "width": "100%",
+                        "symbol": "AMEX:GLD",
+                        "interval": "W",
+                        "timezone": "Etc/UTC",
+                        "theme": "dark",
+                        "hide_volume": true,
+                        "style": "1",
+                        "locale": "en",
+                        "enable_publishing": false,
+                        "hide_top_toolbar": false,
+                        "hide_legend": false,
+                        "save_image": false,
+                        "backgroundColor": "rgba(19, 23, 34, 1)",
+                        "studies": [
+                            {
+                                "id": "RSI@tv-basicstudies",
+                                "inputs": {
+                                    "length": 14
+                                }
+                            }
+                        ],
+                        "support_host": "https://www.tradingview.com"
+                    }
+                  </script>
+                </div>
+              </div>
+
+              <!-- BTCUSD Chart -->
+              <div class="chart-box">
+                <h3>BTCUSD - Bitcoin Spot Price (Reference)</h3>
+                <div class="tradingview-widget-container">
+                  <div class="tradingview-widget-container__widget"></div>
+                  <script
+                    type="text/javascript"
+                    src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js"
+                    async
+                  >
+                    {
+                        "autosize": false,
+                        "height": 700,
+                        "width": "100%",
+                        "symbol": "COINBASE:BTCUSD",
+                        "interval": "W",
+                        "timezone": "Etc/UTC",
+                        "theme": "dark",
+                        "hide_volume": true,
+                        "style": "1",
+                        "locale": "en",
+                        "enable_publishing": false,
+                        "hide_top_toolbar": false,
+                        "hide_legend": false,
+                        "save_image": false,
+                        "backgroundColor": "rgba(19, 23, 34, 1)",
+                        "studies": [
+                            {
+                                "id": "RSI@tv-basicstudies",
+                                "inputs": {
+                                    "length": 14
+                                }
+                            }
+                        ],
+                        "support_host": "https://www.tradingview.com"
+                    }
+                  </script>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="footer" class="footer" style="padding-top: 24px;">
+      <div class="container">
+        <!-- Legal Disclaimer -->
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="disclaimer text-center mb-4" style="font-size: 0.85rem; color: #6c757d; max-width: 900px; margin: 0 auto;">
+              <p>
+                <strong>Legal Disclaimer:</strong> This dashboard is for educational and informational purposes only and does not constitute financial, investment, or legal advice. 
+                All investing involves risk, including the potential loss of principal. Past performance does not guarantee future results.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="copyright text-center">
+          <p>
+            © <span>Copyright</span>
+            <strong class="px-1 sitename">OK BOOMER Investing</strong>
+            <span>All Rights Reserved</span>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scroll Top -->
+    <a
+      href="#"
+      id="scroll-top"
+      class="scroll-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+
+    <!-- Main JS File -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+  </body>
+</html>

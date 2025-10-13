@@ -122,3 +122,50 @@
   document.addEventListener('scroll', navmenuScrollspy);
 
 })();
+/**
+ * Dashboard Authentication Protection
+ * Add this to the end of your main.js file
+ */
+(function() {
+  "use strict";
+
+  // Only run on dashboard page
+  if (document.body.classList.contains('dashboard-page')) {
+    checkDashboardAccess();
+  }
+
+  function checkDashboardAccess() {
+    const token = sessionStorage.getItem('dashboard_token');
+    const timestamp = sessionStorage.getItem('token_timestamp');
+
+    // No token found - redirect to login
+    if (!token || !timestamp) {
+      redirectToLogin();
+      return;
+    }
+
+    // Check if token has expired (24 hours)
+    const tokenAge = Date.now() - parseInt(timestamp);
+    const maxAge = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+
+    if (tokenAge >= maxAge) {
+      // Token expired - clear and redirect
+      sessionStorage.removeItem('dashboard_token');
+      sessionStorage.removeItem('token_timestamp');
+      redirectToLogin();
+      return;
+    }
+
+    // Token is valid - user can access dashboard
+    console.log('Dashboard access granted');
+  }
+
+  function redirectToLogin() {
+    // Prevent any further page execution
+    document.body.innerHTML = '';
+    
+    // Redirect to login page
+    window.location.href = 'dashboard-login.html';
+  }
+
+})();

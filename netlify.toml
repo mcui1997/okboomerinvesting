@@ -1,0 +1,28 @@
+# Netlify configuration file
+
+[build]
+  # Publish directory (where your HTML files are)
+  publish = "."
+  
+  # Functions directory
+  functions = "netlify/functions"
+
+# Redirect rules
+[[redirects]]
+  # Redirect /dashboard to login page
+  from = "/dashboard"
+  to = "/dashboard-login.html"
+  status = 301
+  force = true
+
+# Headers for security
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Environment variables (set these in Netlify Dashboard)
+# DASHBOARD_ACCESS_CODE = "your-secret-code-here"
