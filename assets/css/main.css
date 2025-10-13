@@ -280,7 +280,7 @@ h6 {
   padding: 8px 25px;
   border-radius: 50px;
   transition: 0.3s;
-    margin-top: 12px !important;
+  margin-top: 12px !important;
 }
 
 .header .btn-getstarted:hover,
@@ -1168,4 +1168,15 @@ section,
 #solution .list-unstyled li {
   text-align: center !important;
   display: block;
+}
+/* Shorten button text on mobile */
+@media (max-width: 768px) {
+  #navbar-btn-get-book {
+    font-size: 0;
+  }
+
+  #navbar-btn-get-book:after {
+    content: "Book";
+    font-size: 14px;
+  }
 }
