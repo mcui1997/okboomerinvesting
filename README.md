@@ -1,6 +1,6 @@
 # OK BOOMER Investing
 
-Landing page for my investing book "OK BOOMER! I'll Learn Investing Myself" and RSI dashboard tool.
+Landing page for my investing book "OK BOOMER! I'll Learn Investing Myself" and dashboard tool.
 
 ## What's Included
 
@@ -9,7 +9,7 @@ Landing page for my investing book "OK BOOMER! I'll Learn Investing Myself" and 
 
 ## Live Site
 
-[Add your URL here]
+https://www.okboomerinvesting.com
 
 ## License
 
