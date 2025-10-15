@@ -13,4 +13,4 @@ https://www.okboomerinvesting.com
 
 ## License
 
-All Rights Reserved © OK BOOMER Investing
+All Rights Reserved © OK BOOMER Investing LLC
