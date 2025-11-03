@@ -181,11 +181,10 @@
     window.location.href = "dashboard-login.html";
   }
 })();
-
 /**
  * Portfolio Growth Chart
  */
-(function () {
+(function() {
   "use strict";
 
   window.addEventListener("load", function () {
@@ -193,6 +192,9 @@
 
     // Only initialize if we're on a page with the chart
     if (!ctx) return;
+
+    // Detect if mobile
+    const isMobile = window.innerWidth < 768;
 
     new Chart(ctx, {
       type: "line",
@@ -263,7 +265,7 @@
       options: {
         responsive: true,
         maintainAspectRatio: true,
-        aspectRatio: 1.5,
+        aspectRatio: isMobile ? 1.2 : 1.5,
         interaction: {
           intersect: false,
           mode: "index",
@@ -276,7 +278,7 @@
             display: true,
             text: "My Portfolio Journey",
             font: {
-              size: 18,
+              size: isMobile ? 16 : 18,
               weight: "bold",
               family: "Raleway",
             },
@@ -305,7 +307,7 @@
               },
             },
           },
-          annotation: {
+          annotation: isMobile ? {} : {
             annotations: {
               // Arrow and label for $20k loss
               lossArrow: {
@@ -399,7 +401,7 @@
                 return "$" + value / 1000 + "k";
               },
               font: {
-                size: 12,
+                size: isMobile ? 10 : 12,
               },
             },
             grid: {
@@ -420,7 +422,7 @@
                 return "";
               },
               font: {
-                size: 12,
+                size: isMobile ? 10 : 12,
               },
               maxRotation: 0,
             },

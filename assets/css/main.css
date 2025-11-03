@@ -825,7 +825,7 @@ section,
 .section {
   color: var(--default-color);
   background-color: var(--background-color);
-  padding: 60px 60px;
+  padding: 40px 40px;
   scroll-margin-top: 100px;
   overflow: clip;
 }
@@ -842,8 +842,8 @@ section,
 --------------------------------------------------------------*/
 .section-title {
   text-align: center;
-  padding: 30px 0;
-  margin-bottom: 30px;
+  padding: 15px 0;
+  margin-bottom: 15px;
   position: relative;
 }
 
@@ -894,7 +894,7 @@ section,
   width: 100%;
   min-height: 70vh;
   position: relative;
-  padding: 120px 0 60px 0;
+  padding: 60px 0 60px 0;
   display: flex;
   align-items: center;
 }
@@ -904,7 +904,7 @@ section,
   width: 100%;
   min-height: 70vh;
   position: relative;
-  padding: 40px 0 60px 0;
+  padding: 20px 0 60px 0;
   display: flex;
   align-items: center;
 }
