@@ -235,7 +235,7 @@ h6 {
 }
 
 .header .logo img {
-  max-height: 36px;
+  max-height: 80px;
   margin-right: 8px;
 }
 
@@ -825,7 +825,7 @@ section,
 .section {
   color: var(--default-color);
   background-color: var(--background-color);
-  padding: 40px 40px;
+  padding: 16px 16px;
   scroll-margin-top: 100px;
   overflow: clip;
 }
