@@ -1,126 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Dashboard Access - OK BOOMER Investing</title>
 
-    <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon" />
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Dashboard Access - OK BOOMER Investing</title>
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700&display=swap"
-      rel="stylesheet"
-    />
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon" />
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 
-    <!-- CSS Files -->
-    <link
-      href="assets/vendor/bootstrap/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
-      rel="stylesheet"
-    />
-    <link href="assets/css/main.css" rel="stylesheet" />
-    <link href="assets/css/login.css" rel="stylesheet" />
-  </head>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700&display=swap"
+    rel="stylesheet" />
 
-  <body class="login-page">
-    <header id="header" class="header d-flex align-items-center sticky-top">
-      <div
-        class="container-fluid container-xl position-relative d-flex align-items-center"
-      >
-        <a href="index.html" class="logo d-flex align-items-center me-auto">
-          <h1 class="sitename">OKB Investing</h1>
+  <!-- CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+  <link href="assets/css/main.css" rel="stylesheet" />
+  <link href="assets/css/login.css" rel="stylesheet" />
+</head>
+
+<body class="login-page">
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <img src="assets/img/logo.png">
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#solution">System</a></li>
+          <li><a href="dashboard-login.html" class="active">Dashboard</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <a class="btn-getstarted" id="navbar-btn-get-book" href="https://okboomerinvesting.gumroad.com/l/freepreview"
+        target="_blank">Free Preview</a>
+    </div>
+  </header>
+
+  <section class="login-section">
+    <div class="login-container">
+      <div class="login-header">
+        <i class="bi bi-lock-fill"></i>
+        <h2>Access Dashboard</h2>
+        <p>
+          Enter your access code to view the dashboard. Your code
+          was included with your book purchase.
+        </p>
+      </div>
+
+      <div id="error-message" class="error-message">
+        Invalid access code. Please check your code and try again.
+      </div>
+
+      <form id="login-form" class="login-form">
+        <div class="form-group">
+          <label for="access-code">Access Code</label>
+          <input type="text" id="access-code" name="access-code" placeholder="Enter your access code" required
+            autocomplete="off" />
+        </div>
+
+        <button type="submit" class="submit-btn" id="submit-btn">
+          Access Dashboard
+        </button>
+      </form>
+
+      <div class="help-text">
+        <p>Don't have an access code?</p>
+        <a href="https://okboomerinvesting.gumroad.com/l/full" target="_blank">
+          Purchase the book to get instant access →
         </a>
-
-        <nav id="navmenu" class="navmenu">
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#about">About</a></li>
-            <li><a href="index.html#solution">System</a></li>
-            <li><a href="dashboard-login.html" class="active">Dashboard</a></li>
-          </ul>
-          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-        </nav>
-
-        <a
-          class="btn-getstarted"
-          id="navbar-btn-get-book"
-          href="https://okboomerinvesting.gumroad.com/l/freepreview"
-          target="_blank"
-          >Free Preview</a
-        >
       </div>
-    </header>
+    </div>
+  </section>
 
-    <section class="login-section">
-      <div class="login-container">
-        <div class="login-header">
-          <i class="bi bi-lock-fill"></i>
-          <h2>Access Dashboard</h2>
-          <p>
-            Enter your access code to view the dashboard. Your code
-            was included with your book purchase.
-          </p>
-        </div>
-
-        <div id="error-message" class="error-message">
-          Invalid access code. Please check your code and try again.
-        </div>
-
-        <form id="login-form" class="login-form">
-          <div class="form-group">
-            <label for="access-code">Access Code</label>
-            <input
-              type="text"
-              id="access-code"
-              name="access-code"
-              placeholder="Enter your access code"
-              required
-              autocomplete="off"
-            />
-          </div>
-
-          <button type="submit" class="submit-btn" id="submit-btn">
-            Access Dashboard
-          </button>
-        </form>
-
-        <div class="help-text">
-          <p>Don't have an access code?</p>
-          <a
-            href="https://okboomerinvesting.gumroad.com/l/full"
-            target="_blank"
-          >
-            Purchase the book to get instant access →
-          </a>
-        </div>
+  <footer id="footer" class="footer" style="padding-top: 24px">
+    <div class="container">
+      <div class="copyright text-center">
+        <p>
+          © <span>Copyright</span>
+          <strong class="px-1 sitename">Ok Boomer Investing LLC</strong>
+          <span>All Rights Reserved</span>
+        </p>
       </div>
-    </section>
+    </div>
+  </footer>
 
-    <footer id="footer" class="footer" style="padding-top: 24px">
-      <div class="container">
-        <div class="copyright text-center">
-          <p>
-            © <span>Copyright</span>
-            <strong class="px-1 sitename">Ok Boomer Investing LLC</strong>
-            <span>All Rights Reserved</span>
-          </p>
-        </div>
-      </div>
-    </footer>
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Vendor JS Files -->
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/login.js"></script>
+</body>
 
-    <!-- Main JS File -->
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/login.js"></script>
-  </body>
 </html>
